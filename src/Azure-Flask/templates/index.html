@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='stylesheets/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+    </nav>
+    <header>
+        <h3>SG52A - TreeTalk NotiFire</h3>
+    </header>
+    <div class="container">
+        <div class="box">
+            <h3>{{ temperature }} C°</h3>
+            <h2>Temperature</h2>
+        </div>
+        <div class="box">
+            <h3>{{ humidity }}%</h3>
+            <h2>Air Humidity</h2>
+        </div>
+        <div class="box">
+            {% if orientation == 1 %}
+                <h3>Device fall detected</h3>
+            {% else %}
+                <h3>No fall detected</h3>
+            {% endif %}
+            <h2>Device Orientation</h2>
+        </div>
+        <div class="box">
+            <h3>{{ air_quality }} PPM</h3>
+            <h2>Air Quality</h2>
+        </div>
+        <div class="box">
+            <h3>{{ percentage }}%</h3>
+            <h2>Battery Percentage</h2>
+        </div>
+        <div class="box">
+            {% if detection == 1 %}
+                <h3>Fire detected</h3>
+            {% else %}
+                <h3>No fire detected</h3>
+            {% endif %}
+            <h2>Device Detection</h2>
+        </div>
+    </div>
+    <footer>
+        <h4>Last synced: {{ timestamp }}</h4>
+    </footer>
+</body>
+</html>
